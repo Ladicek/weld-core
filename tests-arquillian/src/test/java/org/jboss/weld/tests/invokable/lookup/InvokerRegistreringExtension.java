@@ -44,15 +44,15 @@ public class InvokerRegistreringExtension implements Extension {
         Assert.assertEquals(5, invokableMethods.size());
         for (AnnotatedMethod<? super InvokableBean> invokableMethod : invokableMethods) {
             if (invokableMethod.getJavaMember().getName().contains("instanceLookup")) {
-                instanceLookupInvoker = pmb.createInvoker(invokableMethod).setInstanceLookup().build();
+                instanceLookupInvoker = pmb.createInvoker(invokableMethod).withInstanceLookup().build();
             } else if (invokableMethod.getJavaMember().getName().contains("unsatisfiedLookup")) {
-                unsatisfiedLookupInvoker = pmb.createInvoker(invokableMethod).setArgumentLookup(0).build();
+                unsatisfiedLookupInvoker = pmb.createInvoker(invokableMethod).withArgumentLookup(0).build();
             } else if (invokableMethod.getJavaMember().getName().contains("ambiguousLookup")) {
-                ambiguousLookupInvoker = pmb.createInvoker(invokableMethod).setArgumentLookup(0).build();
+                ambiguousLookupInvoker = pmb.createInvoker(invokableMethod).withArgumentLookup(0).build();
             } else if (invokableMethod.getJavaMember().getName().contains("lookupWithRegisteredQualifier")) {
-                lookupWithRegisteredQualifier = pmb.createInvoker(invokableMethod).setArgumentLookup(0).build();
+                lookupWithRegisteredQualifier = pmb.createInvoker(invokableMethod).withArgumentLookup(0).build();
             } else {
-                correctLookupInvoker = pmb.createInvoker(invokableMethod).setArgumentLookup(0).setArgumentLookup(1).build();
+                correctLookupInvoker = pmb.createInvoker(invokableMethod).withArgumentLookup(0).withArgumentLookup(1).build();
             }
         }
     }

@@ -154,16 +154,16 @@ public class ObservingExtension implements Extension {
         for (AnnotatedMethod<? super SimpleBean> invokableMethod : invokableMethods) {
             if (invokableMethod.getJavaMember().getName().contains("staticPing")) {
                 staticNoTransformationInvoker = pmb.createInvoker(invokableMethod).build();
-                staticInstanceLookupInvoker = pmb.createInvoker(invokableMethod).setInstanceLookup().build();
-                staticArgLookupInvoker = pmb.createInvoker(invokableMethod).setArgumentLookup(0).setArgumentLookup(1).build();
-                staticLookupAllInvoker = pmb.createInvoker(invokableMethod).setArgumentLookup(0).setArgumentLookup(1)
-                        .setInstanceLookup().build();
+                staticInstanceLookupInvoker = pmb.createInvoker(invokableMethod).withInstanceLookup().build();
+                staticArgLookupInvoker = pmb.createInvoker(invokableMethod).withArgumentLookup(0).withArgumentLookup(1).build();
+                staticLookupAllInvoker = pmb.createInvoker(invokableMethod).withArgumentLookup(0).withArgumentLookup(1)
+                        .withInstanceLookup().build();
             } else if (invokableMethod.getJavaMember().getName().contains("ping")) {
                 noTransformationInvoker = pmb.createInvoker(invokableMethod).build();
-                instanceLookupInvoker = pmb.createInvoker(invokableMethod).setInstanceLookup().build();
-                argLookupInvoker = pmb.createInvoker(invokableMethod).setArgumentLookup(0).setArgumentLookup(1).build();
-                lookupAllInvoker = pmb.createInvoker(invokableMethod).setArgumentLookup(0).setArgumentLookup(1)
-                        .setInstanceLookup().build();
+                instanceLookupInvoker = pmb.createInvoker(invokableMethod).withInstanceLookup().build();
+                argLookupInvoker = pmb.createInvoker(invokableMethod).withArgumentLookup(0).withArgumentLookup(1).build();
+                lookupAllInvoker = pmb.createInvoker(invokableMethod).withArgumentLookup(0).withArgumentLookup(1)
+                        .withInstanceLookup().build();
             }
         }
     }

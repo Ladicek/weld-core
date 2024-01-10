@@ -36,14 +36,14 @@ public class InvokableMethodLookupTest {
     InvokableBean bean;
 
     @Test
-    public void testInstanceLookupWithQualifiers() {
+    public void testInstanceLookupWithQualifiers() throws Exception {
         Object invokerResult = extension.getInstanceLookupInvoker().invoke(null, new Object[] {});
         assertTrue(invokerResult instanceof String);
         assertEquals(InvokableBean.class.getSimpleName(), invokerResult);
     }
 
     @Test
-    public void testCorrectArgLookupWithQualifiers() {
+    public void testCorrectArgLookupWithQualifiers() throws Exception {
         Object invokerResult = extension.getCorrectLookupInvoker().invoke(bean, new Object[] { null, null });
         assertTrue(invokerResult instanceof String);
         assertEquals(
@@ -52,14 +52,14 @@ public class InvokableMethodLookupTest {
     }
 
     @Test
-    public void testLookupWithRegisteredQualifier() {
+    public void testLookupWithRegisteredQualifier() throws Exception {
         Object invokerResult = extension.getLookupWithRegisteredQualifier().invoke(bean, new Object[] { null });
         assertTrue(invokerResult instanceof String);
         assertEquals(ToBeQualifier.class.getSimpleName(), invokerResult);
     }
 
     @Test
-    public void testUnsatisfiedLookupWithQualifier() {
+    public void testUnsatisfiedLookupWithQualifier() throws Exception {
         try {
             Object invokerResult = extension.getUnsatisfiedLookupInvoker().invoke(bean, new Object[] { null });
             fail();
@@ -69,7 +69,7 @@ public class InvokableMethodLookupTest {
     }
 
     @Test
-    public void testAmbigLookupWithQualifiers() {
+    public void testAmbigLookupWithQualifiers() throws Exception {
         try {
             Object invokerResult = extension.getAmbiguousLookupInvoker().invoke(bean, new Object[] { null });
             fail();
