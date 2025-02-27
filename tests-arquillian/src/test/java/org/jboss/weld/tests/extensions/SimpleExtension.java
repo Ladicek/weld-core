@@ -17,10 +17,10 @@
 package org.jboss.weld.tests.extensions;
 
 import jakarta.enterprise.event.Observes;
-import jakarta.enterprise.inject.spi.BeanManager;
 import jakarta.enterprise.inject.spi.BeforeBeanDiscovery;
 import jakarta.enterprise.inject.spi.BeforeShutdown;
 import jakarta.enterprise.inject.spi.Extension;
+import jakarta.enterprise.inject.spi.el.ELAwareBeanManager;
 
 public class SimpleExtension implements Extension {
 
@@ -34,7 +34,7 @@ public class SimpleExtension implements Extension {
         return observedBeforeBeanDiscovery;
     }
 
-    public void observeBeforeShutdown(@Observes BeforeShutdown beforeShutdown, BeanManager beanManager) {
+    public void observeBeforeShutdown(@Observes BeforeShutdown beforeShutdown, ELAwareBeanManager beanManager) {
         assert beanManager != null;
         assert beanManager.getELResolver() != null;
     }
